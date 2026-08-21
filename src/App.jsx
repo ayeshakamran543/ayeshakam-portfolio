@@ -140,9 +140,9 @@ const PROJS = [
 
 const STATS = [
   { k: "y", v: 2,  s: "+", l: "Years of experience" },
-  { k: "d", v: 5,  s: "",  l: "Developers led" },
-  { k: "f", v: 10, s: "+", l: "Features shipped" },
-  { k: "a", v: 6,  s: "",  l: "Apps built" },
+  { k: "p", v: 5,  s: "+",  l: "Production apps" },
+  { k: "f", v: 50, s: "+", l: "Features shipped" },
+  { k: "a", v: 20, s: "+", l: "Apps built" },
 ];
 
 /* ── UTILS ───────────────────────────────────────────────────────────────── */
@@ -424,7 +424,7 @@ export default function Portfolio() {
   const [scrolled, setScrolled]         = useState(false);
   const [menuOpen, setMenuOpen]         = useState(false);
   const [cnt,      setCnt]              = useState(0);
-  const [sv,       setSv]               = useState({ y:0, d:0, f:0, a:0 });
+  const [sv,       setSv]               = useState({ y:0, p:0, f:0, a:0 });
   const [activeProj, setActiveProj]     = useState(null); // case study modal
   const [copied, setCopied]             = useState(false);
 
@@ -450,17 +450,17 @@ export default function Portfolio() {
 
   useEffect(() => {
     if (!aSeen) return;
-    const tgt = { y:2, d:5, f:10, a:6 }, dur = 1800, start = Date.now();
+    const tgt = { y:2, p:5, f:50, a:20 }, dur = 1800, start = Date.now();
     const iv = setInterval(() => {
       const p = Math.min((Date.now()-start)/dur,1), e = 1-Math.pow(1-p,3);
-      setSv({ y:Math.round(e*tgt.y), d:Math.round(e*tgt.d), f:Math.round(e*tgt.f), a:Math.round(e*tgt.a) });
+      setSv({ y:Math.round(e*tgt.y), p:Math.round(e*tgt.p), f:Math.round(e*tgt.f), a:Math.round(e*tgt.a) });
       if (p >= 1) clearInterval(iv);
     }, 16);
     return () => clearInterval(iv);
   }, [aSeen]);
 
   const go = (id) => { document.getElementById(id)?.scrollIntoView({ behavior:"smooth" }); setMenuOpen(false); };
-  const sm = { y:sv.y, d:sv.d, f:sv.f, a:sv.a };
+  const sm = { y:sv.y, p:sv.p, f:sv.f, a:sv.a };
   const NAV = ["Work","About","Skills","Contact"];
 
   const copyEmail = () => {
@@ -554,7 +554,7 @@ export default function Portfolio() {
         <div className="nav-links">
           {NAV.map(l => <button key={l} className="nlink" onClick={() => go(l.toLowerCase())}>{l}</button>)}
           <div style={{ width:1, height:18, background:"rgba(255,255,255,.1)", margin:"0 4px" }} />
-          <a href="https://github.com/ayeshakamran543543" target="_blank" rel="noreferrer" className="icon-btn" aria-label="GitHub"><GithubIcon size={16} /></a>
+          <a href="https://github.com/ayeshakamran543" target="_blank" rel="noreferrer" className="icon-btn" aria-label="GitHub"><GithubIcon size={16} /></a>
           <a href="https://www.linkedin.com/in/ayesha-kamran-b2b570247/" target="_blank" rel="noreferrer" className="icon-btn" aria-label="LinkedIn"><LinkedinIcon size={16} /></a>
           <a href="/resume.pdf" download="Ayesha_Kamran_Resume.pdf" className="resume-btn"><FileDown size={14} /> Resume</a>
         </div>
@@ -568,7 +568,7 @@ export default function Portfolio() {
         <div className="mobile-menu">
           {NAV.map(l => <button key={l} className="nlink" onClick={() => go(l.toLowerCase())}>{l}</button>)}
           <div className="mobile-social">
-            <a href="https://github.com/ayeshakamran543543" target="_blank" rel="noreferrer" className="icon-btn"><GithubIcon size={18} /></a>
+            <a href="https://github.com/ayeshakamran543" target="_blank" rel="noreferrer" className="icon-btn"><GithubIcon size={18} /></a>
             <a href="https://www.linkedin.com/in/ayesha-kamran-b2b570247/" target="_blank" rel="noreferrer" className="icon-btn"><LinkedinIcon size={18} /></a>
             <a href="/resume.pdf" download="Ayesha_Kamran_Resume.pdf" className="resume-btn"><FileDown size={14} /> Resume</a>
           </div>
@@ -630,14 +630,14 @@ export default function Portfolio() {
               <div style={{ width:40,height:2.5,background:"#5DCAA5",borderRadius:2,marginBottom:26,opacity:aSeen?1:0,transition:"opacity .5s ease .15s" }} />
               <h2 style={{ fontSize:"clamp(30px,4.5vw,56px)",fontWeight:700,lineHeight:1.1,letterSpacing:"-.025em",marginBottom:28,...fadeUp(aSeen,.15) }}>Building apps<br />people love.</h2>
               <p style={{ fontSize:"clamp(15px,1.8vw,17px)",lineHeight:1.8,color:"#D3D1C7",marginBottom:20,...fadeUp(aSeen,.3) }}>
-                I'm a Flutter Developer & Team Lead with 2+ years of experience crafting mobile experiences that are fast, beautiful, and purposeful. I lead a team of 5 at Splenify — turning design specs into polished UI, mentoring junior devs, and shipping features that matter.
+                I'm a Flutter Developer & Team Lead with 2+ years of experience crafting mobile experiences that are fast, beautiful, and purposeful. At Splenify, I turn design specs into polished, production-ready UI, mentor junior developers, and take features from concept to launch across a growing portfolio of apps.
               </p>
               <p style={{ fontSize:"clamp(15px,1.8vw,17px)",lineHeight:1.8,color:"#D3D1C7",marginBottom:40,...fadeUp(aSeen,.42) }}>
                 Currently building FanHub and MogWars — two major apps from the ground up.
               </p>
               <div style={{ display:"inline-flex",alignItems:"center",gap:10,padding:"10px 18px",borderRadius:24,background:"rgba(15,110,86,.2)",border:"1px solid rgba(93,202,165,.3)",...fadeUp(aSeen,.55) }}>
                 <div style={{ width:8,height:8,borderRadius:"50%",background:"#5DCAA5",animation:"dotP 2s ease-in-out infinite" }} />
-                <span style={{ fontSize:13,fontWeight:500,color:"#5DCAA5" }}>Currently: FanHub & MogWars</span>
+                <span style={{ fontSize:13,fontWeight:500,color:"#5DCAA5" }}>Currently: Splenify</span>
               </div>
             </div>
             <div className="about-stats" style={{ ...fadeUp(aSeen,.3) }}>
@@ -734,11 +734,11 @@ export default function Portfolio() {
 
           {/* Social row */}
           <div style={{ display:"flex",gap:12,marginTop:28,...fadeUp(cSeen,.45) }}>
-            <a href="https://github.com/ayeshakamran543543" target="_blank" rel="noreferrer"
+            <a href="https://github.com/ayeshakamran543" target="_blank" rel="noreferrer"
               style={{ display:"flex",alignItems:"center",gap:8,color:"#888780",textDecoration:"none",fontSize:13,fontWeight:500,transition:"color .2s" }}
               onMouseEnter={e=>e.currentTarget.style.color="#F1EFE8"}
               onMouseLeave={e=>e.currentTarget.style.color="#888780"}>
-              <GithubIcon size={16} /> github.com/ayeshakamran
+              <GithubIcon size={16} /> github.com/ayeshakamran543
             </a>
             <span style={{ color:"rgba(255,255,255,.15)" }}>·</span>
             <a href="https://www.linkedin.com/in/ayesha-kamran-b2b570247/" target="_blank" rel="noreferrer"
