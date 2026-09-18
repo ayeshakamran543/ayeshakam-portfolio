@@ -1,0 +1,25 @@
+/*
+  Replaces the Vite starter's index.css. The default scaffold sets
+  `body { display: flex; place-items: center; min-height: 100vh }`,
+  which centers #root as a flex item — that breaks a normal scrolling
+  full-page layout like this portfolio. This version keeps just the
+  safe, generic resets.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
