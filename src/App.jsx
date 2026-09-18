@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { IconArrow, IconClose, IconCopy, IconCheck, GithubIcon, LinkedinIcon, ScribbleLogo, SketchMenu, ProjectIcon } from "./icons";
 import { PROJECTS, SKILL_GROUPS, STATS, QUOTE, TERMINAL_LINES } from "./data";
 import { EASE, useInView, enter } from "./motion";
-import { Sticker, SquiggleLine } from "./Sticker";
-import { CaseStudyModal } from "./CaseStudyModal";
+import { Sticker, SquiggleLine } from "./sticker";
+import { CaseStudyModal } from "./caseStudyModal";
 
 /* ════════════════════════════════════════════════════════════════════════
    Ayesha Kamran — Portfolio
