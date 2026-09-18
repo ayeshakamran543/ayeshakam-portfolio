@@ -1,18 +1,4 @@
-/* ── TYPED CODE (hero terminal) ──────────────────────────────────────────── */
-export const CODE = [
-  { t: "class ", c: "#5DCAA5" }, { t: "AyeshaPortfolio", c: "#F1EFE8" }, { t: " {\n", c: "#D3D1C7" },
-  { t: "  role", c: "#F0997B" }, { t: " = ", c: "#D3D1C7" }, { t: '"Flutter Lead"\n', c: "#5DCAA5" },
-  { t: "  skills", c: "#F0997B" }, { t: " = [\n", c: "#D3D1C7" },
-  { t: '    "Flutter"', c: "#5DCAA5" }, { t: ", ", c: "#D3D1C7" }, { t: '"Clean Architecture"', c: "#5DCAA5" }, { t: ",\n", c: "#D3D1C7" },
-  { t: '    "Riverpod"', c: "#5DCAA5" }, { t: ", ", c: "#D3D1C7" }, { t: '"BLoC"', c: "#5DCAA5" }, { t: "\n", c: "#D3D1C7" },
-  { t: "  ]\n\n", c: "#D3D1C7" },
-  { t: "  build", c: "#F0997B" }, { t: "() {\n    return ", c: "#D3D1C7" },
-  { t: "greatApps()", c: "#F1EFE8" }, { t: " ", c: "#D3D1C7" }, { t: "// always\n  }\n", c: "#888780" },
-  { t: "}", c: "#D3D1C7" },
-];
-export const TOTAL = CODE.reduce((s, x) => s + x.t.length, 0);
-
-/* ── CASE STUDY DATA ────────────────────────────────────────────────────── */
+/* ── Content (your real portfolio content) ───────────────────────────────── */
 export const CASE_STUDIES = {
   FanHub: {
     subtitle: "Sports fan engagement platform",
@@ -69,39 +55,6 @@ export const CASE_STUDIES = {
     links: { store: "https://play.google.com/store/apps/details?id=com.splenify.nureo", github: null, apk: null, video: null },
     note: "Live on Google Play, built at Splenify. Feature set is from the public listing — challenge/solution are drafted from that and should be refined with real implementation details.",
   },
-  Paycific: {
-    subtitle: "Multi-currency digital wallet",
-    client: "Personal project", duration: "3 months", role: "Solo Flutter Developer",
-    overview: "Paycific is a concept fintech app exploring how a clean, fast digital wallet experience could be built in Flutter — multi-currency support, biometric auth, and animated financial data visualisation all in one.",
-    challenge: "Stripe's Flutter SDK had poor documentation for multi-currency flows at the time. Building a smooth, animated spending breakdown chart that felt native (not WebView) was also non-trivial.",
-    solution: "Implemented a custom CustomPainter-based bar chart with interpolated animation on data load. Used flutter_stripe with manual intent creation on a Node.js test backend. BLoC handled all transaction state with error recovery baked in.",
-    features: ["12-currency wallet with live exchange rates","CustomPainter animated spending chart","Biometric auth (Face ID / Fingerprint)","Transaction history with category filters","Send / receive with QR code scan","Stripe integration for card top-ups","Offline mode with Isar local cache","Dark-mode-only design system"],
-    tech: { "State Management":"BLoC + Cubit", "Payments":"Stripe Flutter SDK", "Charts":"Custom Painter", "Auth":"local_auth (biometrics)", "Local Storage":"Isar DB", "Networking":"Dio + REST APIs" },
-    links: { store: null, github: "https://github.com/ayeshakamran543", apk: "#", video: "#" },
-    note: "Open-source demo. Backend uses Stripe test mode — no real charges.",
-  },
-  Pulse: {
-    subtitle: "AI-adaptive health & fitness tracker",
-    client: "Personal project", duration: "2 months", role: "Solo Flutter Developer",
-    overview: "Pulse is a health tracking concept with deeply custom UI — ring-based progress visualisation drawn with Canvas API, Apple Health & Google Fit integration, and a streak reward system complete with Lottie celebration animations.",
-    challenge: "Apple HealthKit and Google Health Connect have completely different APIs. Abstracting them into a single clean data layer without leaking platform specifics into the UI layer took significant architectural work.",
-    solution: "Built a HealthRepository interface with platform-specific implementations behind it — the UI never knows which platform it's on. Custom Painter rings update with a spring-curve animation on every data refresh.",
-    features: ["Custom Painter progress rings (spring animation)","Apple Health & Google Fit integration","Adaptive workout recommendations","Streak system with Lottie celebrations","Heart rate zone tracking","Sleep quality visualisation","Wearable device data sync","Weekly summary with shareable card"],
-    tech: { "State Management":"Riverpod", "Charts":"Custom Painter + Canvas API", "Health Data":"health package (HealthKit + Health Connect)", "Animation":"Lottie + AnimationController", "Architecture":"Repository pattern", "Local Storage":"Hive" },
-    links: { store: null, github: "https://github.com/ayeshakamran543", apk: "#", video: "#" },
-    note: "Open-source demo. Health data stays on-device — no server sync in demo.",
-  },
-  Threadly: {
-    subtitle: "Social commerce — creators meet shopping",
-    client: "Personal project", duration: "2 months", role: "Solo Flutter Developer",
-    overview: "Threadly is a social commerce concept where style creators curate shoppable lookbooks. Users follow creators, save outfits, and complete in-app checkout — all powered by a custom scroll-driven animation engine.",
-    challenge: "Achieving the signature 'parallax product card' scroll effect in Flutter — where product images move at a different rate from the card background — without dropping below 60fps on mid-range Android devices.",
-    solution: "Used a ScrollController-driven transform matrix on each card's image layer, updating only on scroll delta rather than rebuilding widgets. Added a Sliver-based layout for the feed to avoid off-screen rebuilds entirely.",
-    features: ["Creator lookbook builder","Shoppable product tagging","In-app checkout flow","Parallax scroll product cards","Save / wishlist with Lottie heart","Infinite scroll feed (Sliver-based)","Creator follow + notification system","Shareable outfit card generation"],
-    tech: { "State Management":"Provider", "Animation":"Custom ScrollController + Transform", "UI":"Lottie + flutter_animate", "Networking":"Dio + REST APIs", "Image":"cached_network_image", "Architecture":"MVVM" },
-    links: { store: null, github: "https://github.com/ayeshakamran543", apk: "#", video: "#" },
-    note: "Open-source demo. Uses mock product API — no real purchases.",
-  },
   Zeno: {
     subtitle: "AI-powered task planner with offline sync",
     client: "Personal project", duration: "2 months", role: "Solo Flutter Developer",
@@ -115,47 +68,49 @@ export const CASE_STUDIES = {
   },
 };
 
-/* ── SKILL GROUPS ────────────────────────────────────────────────────────── */
-export const SKILL_GROUPS = [
-  { cat: "Core Development", accent: "#5DCAA5",
-    skills: [{ n: "Flutter SDK", d: "Cross-platform UI" }, { n: "Dart · Async/Streams", d: "Language deep dive" },
-             { n: "Clean Architecture", d: "Scalable structure" }, { n: "SOLID Principles", d: "Design patterns" }] },
-  { cat: "State & Data", accent: "#1D9E75",
-    skills: [{ n: "Riverpod", d: "Modern state mgmt" }, { n: "BLoC Pattern", d: "Business logic" },
-             { n: "REST APIs + Dio", d: "Networking layer" }, { n: "Firebase Suite", d: "Auth · FCM · Firestore" }] },
-  { cat: "UI & Quality", accent: "#D85A30",
-    skills: [{ n: "Custom Animations", d: "Canvas & Lottie" }, { n: "Figma → Flutter", d: "Pixel-perfect handoff" },
-             { n: "Unit & Widget Tests", d: "Test-driven quality" }, { n: "CI/CD · Codemagic", d: "Automated pipelines" }] },
-  { cat: "Leadership", accent: "#5DCAA5",
-    skills: [{ n: "Team Lead · 5 devs", d: "Promoted 2026" }, { n: "Agile / Scrum", d: "Sprint planning" },
-             { n: "Code Review", d: "Standards & mentorship" }, { n: "App Store Deploy", d: "iOS & Play Store" }] },
+export const PROJECTS = [
+  { name: "FanHub", year: "2026", tags: ["Flutter", "Provider", "REST APIs"],
+    desc: "Sports fan engagement platform — Predictions, Donations, Impact Wall, Engage Live, and real-time match data." },
+  { name: "MoRoute", year: "2025", tags: ["Flutter", "Live Location", "Google Play"],
+    desc: "Road-safety navigation app — live road alerts, one-tap SOS, trusted contacts, and nearby help." },
+  { name: "My Chain Fitness", year: "2025", tags: ["Flutter", "Habit Tracking", "Google Play"],
+    desc: "Discipline & habit-streak app — build your chain, don't break it." },
+  { name: "Nureo", year: "2025", tags: ["Flutter", "Wellness", "Google Play"],
+    desc: "Nutrition tracking, expert booking, and personalised wellness plans." },
+  { name: "MogWars", year: "2025", tags: ["Flutter", "BLoC", "Firebase"],
+    desc: "Live-streaming gaming arena with Mog Off battle mode, real-time reactions, and multi-role architecture." },
+  { name: "Zeno", year: "2025", tags: ["Flutter", "OpenAI API", "Isar DB"],
+    desc: "AI daily planner with streaming GPT suggestions, custom calendar widget, and offline-first Isar sync." },
 ];
 
-/* ── PROJECTS ────────────────────────────────────────────────────────────── */
-export const PROJS = [
-  { name: "FanHub",   accent: "#5DCAA5", year: "2026", type: "cards",
-    tags: ["Flutter", "Provider", "REST APIs", "Animations"],
-    desc: "Sports fan engagement platform — Predictions, Donations, Impact Wall, Engage Live, and real-time match data." },
-  { name: "MoRoute",  accent: "#E8574A", year: "2025", type: "stream",
-    tags: ["Flutter", "Live Location", "Google Play"],
-    desc: "Road-safety navigation app — live road alerts, one-tap SOS, trusted contacts, and nearby help." },
-  { name: "My Chain Fitness", accent: "#3FB6A8", year: "2025", type: "chain",
-    tags: ["Flutter", "Habit Tracking", "Google Play"],
-    desc: "Discipline & habit-streak app — build your chain, don't break it." },
-  { name: "Nureo",    accent: "#D68FB8", year: "2025", type: "health",
-    tags: ["Flutter", "Wellness", "Google Play"],
-    desc: "Nutrition tracking, expert booking, and personalised wellness plans." },
-  { name: "MogWars",  accent: "#D85A30", year: "2025", type: "stream",
-    tags: ["Flutter", "BLoC", "Firebase", "Live Stream"],
-    desc: "Live-streaming gaming arena with Mog Off battle mode, real-time reactions, and multi-role architecture." },
-  { name: "Zeno",     accent: "#E8A838", year: "2025", type: "ai",
-    tags: ["Flutter", "BLoC", "OpenAI API", "Isar DB"],
-    desc: "AI daily planner with streaming GPT suggestions, custom calendar widget, and offline-first Isar sync." },
+export const SKILL_GROUPS = [
+  { cat: "Core development",
+    skills: [{ n: "Flutter SDK", d: "Cross-platform UI" }, { n: "Dart — async/streams", d: "Language deep dive" },
+             { n: "Clean architecture", d: "Scalable structure" }, { n: "SOLID principles", d: "Design patterns" }] },
+  { cat: "State & data",
+    skills: [{ n: "Riverpod", d: "Modern state mgmt" }, { n: "BLoC pattern", d: "Business logic" },
+             { n: "REST APIs · Dio", d: "Networking layer" }, { n: "Firebase suite", d: "Auth · FCM · Firestore" }] },
+  { cat: "UI & quality",
+    skills: [{ n: "Custom animations", d: "Canvas & Lottie" }, { n: "Figma to Flutter", d: "Pixel-perfect handoff" },
+             { n: "Unit & widget tests", d: "Test-driven quality" }, { n: "CI/CD · Codemagic", d: "Automated pipelines" }] },
+  { cat: "Collaboration",
+    skills: [{ n: "Agile / Scrum", d: "Sprint planning" }, { n: "Code review", d: "Standards & mentorship" },
+             { n: "App Store deploy", d: "iOS & Play Store" }] },
 ];
 
 export const STATS = [
   { k: "y", v: 2,  s: "+", l: "Years of experience" },
-  { k: "p", v: 5,  s: "+",  l: "Production apps" },
+  { k: "p", v: 5,  s: "+", l: "Production apps" },
   { k: "f", v: 50, s: "+", l: "Features shipped" },
   { k: "a", v: 20, s: "+", l: "Apps built" },
+];
+
+export const QUOTE = "I'd rather rebuild a screen twice than ship one that almost works.";
+
+/* Original joke terminal, written for Ayesha — not copied from any reference */
+export const TERMINAL_LINES = [
+  { t: "$ flutter run --release week.dart", c: "#F1EFE8" },
+  { t: "> Building...", c: "#8A8880" },
+  { t: "> Warning: sleep_hours below minimum threshold", c: "#E8A838" },
+  { t: "> Fix suggested: more coffee, fewer standups", c: "#5DCAA5" },
 ];
