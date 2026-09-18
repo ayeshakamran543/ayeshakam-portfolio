@@ -4,8 +4,8 @@ import { FileDown, ExternalLink, ChevronRight, Copy, Check } from "lucide-react"
 import { GithubIcon, LinkedinIcon } from "./icons.jsx";
 import { TOTAL, PROJS, SKILL_GROUPS, STATS } from "./data";
 import { useInView, fadeUp, renderCode } from "./hooks";
-import { PhoneMock } from "./PhoneMock";
-import { CaseStudyModal } from "./CaseStudyModal";
+import { PhoneMock } from "./phoneMock";
+import { CaseStudyModal } from "./caseStudyModal";
 
 /* ════════════════════════════════════════════════════════════════════════ */
 export default function App() {
