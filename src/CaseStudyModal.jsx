@@ -19,9 +19,11 @@ export function CaseStudyModal({ project, onClose }) {
   return (
     <div className="modal-scrim" onClick={onClose}>
       <div className="modal-panel" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} aria-label="Close" className="modal-close">
-          <IconClose size={15} />
-        </button>
+        <div className="modal-close-wrap">
+          <button onClick={onClose} aria-label="Close" className="modal-close">
+            <IconClose size={15} />
+          </button>
+        </div>
 
         <div className="modal-body">
           <p className="modal-meta">{cs.client} · {cs.duration}</p>
@@ -77,7 +79,7 @@ export function CaseStudyModal({ project, onClose }) {
 
           <Rule />
           <Label>Links</Label>
-          <div className="pill-row">
+          <div className="modal-links-row">
             {cs.links.video && <a href={cs.links.video} target="_blank" rel="noreferrer" className="btn btn-dark">Watch demo <IconArrow size={13} /></a>}
             {cs.links.github && <a href={cs.links.github} target="_blank" rel="noreferrer" className="btn btn-light">View code <IconArrow size={13} /></a>}
             {cs.links.apk && <a href={cs.links.apk} target="_blank" rel="noreferrer" className="btn btn-light">Download APK <IconArrow size={13} /></a>}

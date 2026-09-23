@@ -9,6 +9,9 @@ import { useState, useEffect, useRef } from "react";
    on its own after the page has loaded.
    ───────────────────────────────────────────────────────────────────── */
 export const EASE = "cubic-bezier(.22,1,.36,1)";
+/* A touch of overshoot — used sparingly, only where something should feel
+   like it just landed on the page (ghost numbers, the logo, stat digits) */
+export const POP = "cubic-bezier(.34,1.56,.64,1)";
 
 /* Fires `seen = true` once an element scrolls into view, never repeats */
 export function useInView(threshold = 0.15) {
